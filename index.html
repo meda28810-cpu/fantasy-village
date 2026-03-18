@@ -1,180 +1,249 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فانتازي القرية | BR سريع</title>
+    <title>Al-Wali Fantasy | BR Saree3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-blue: #0a192f; /* أزرق داكن فخم */
-            --gold: #d4af37;        /* ذهبي ملكي */
+            --dark-navy: #0a192f;
+            --gold: #d4af37;
+            --field-green: #2ecc71;
             --white: #ffffff;
-            --light-gray: #f8f9fa;
+            --card-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--light-gray);
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            color: var(--dark-navy);
         }
 
-        /* الهيدر مع تأثير ذهبي */
+        /* Hero Header */
         header {
-            background-color: var(--primary-blue);
+            background: linear-gradient(135deg, var(--dark-navy) 0%, #112240 100%);
             color: var(--white);
-            padding: 40px 20px;
+            padding: 60px 20px;
             text-align: center;
-            border-bottom: 4px solid var(--gold);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border-bottom: 5px solid var(--gold);
+            position: relative;
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.5em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-size: 3rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         header p {
             color: var(--gold);
-            font-weight: bold;
-            font-size: 1.2em;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-top: 10px;
         }
 
         .container {
-            max-width: 900px;
-            margin: 30px auto;
+            max-width: 1100px;
+            margin: -40px auto 40px;
             padding: 20px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
-        h2 {
-            color: var(--primary-blue);
-            border-right: 6px solid var(--gold);
-            padding-right: 15px;
-            margin-bottom: 25px;
+        /* Section Styling */
+        .position-section {
+            margin-bottom: 50px;
         }
 
-        /* تنسيق الجدول */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            overflow: hidden;
-            border-radius: 10px;
-        }
-
-        th {
-            background-color: var(--primary-blue);
+        .section-title {
+            background: var(--dark-navy);
             color: var(--gold);
-            padding: 15px;
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            box-shadow: var(--card-shadow);
+        }
+
+        /* Grid Layout */
+        .player-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        /* Player Card */
+        .player-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 20px;
             text-align: center;
-            font-size: 1.1em;
+            transition: 0.3s transform;
+            border-bottom: 4px solid #ddd;
+            box-shadow: var(--card-shadow);
         }
 
-        td {
-            padding: 12px;
-            border-bottom: 1px solid #eee;
-            text-align: center;
-            font-weight: 500;
+        .player-card:hover {
+            transform: translateY(-10px);
+            border-bottom-color: var(--gold);
         }
 
-        tr:hover {
-            background-color: #fff9e6;
-            transition: 0.3s;
+        .player-name {
+            display: block;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--dark-navy);
         }
-
-        /* تصنيف المراكز بالألوان */
-        .pos-fw { color: #e74c3c; font-weight: bold; } /* مهاجم - أحمر */
-        .pos-mf { color: #2ecc71; font-weight: bold; } /* وسط - أخضر */
-        .pos-df { color: #3498db; font-weight: bold; } /* مدافع - أزرق */
 
         .price-tag {
-            background: #eee;
-            padding: 5px 10px;
+            background: #f8f9fa;
+            color: #555;
+            padding: 5px 15px;
             border-radius: 20px;
-            font-size: 0.9em;
-            color: #444;
+            font-size: 0.9rem;
+            border: 1px solid #eee;
         }
 
-        .cta-section {
-            text-align: center;
-            background: var(--primary-blue);
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
-            margin-top: 40px;
-        }
-
-        .btn {
+        .pos-badge {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
             display: inline-block;
-            background-color: var(--gold);
-            color: var(--primary-blue);
-            padding: 15px 35px;
-            text-decoration: none;
-            font-size: 1.2em;
-            font-weight: bold;
-            border-radius: 50px;
-            transition: 0.4s;
-            margin-top: 15px;
+            color: white;
         }
 
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        .bg-fw { background-color: #e74c3c; } /* Forwards */
+        .bg-mf { background-color: #27ae60; } /* Midfielders */
+        .bg-df { background-color: #2980b9; } /* Defenders */
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--gold);
+            color: var(--dark-navy);
+            padding: 20px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+            z-index: 1000;
+            transition: 0.4s;
+        }
+
+        .fab:hover {
+            background-color: var(--white);
+            transform: scale(1.1);
         }
 
         footer {
             text-align: center;
-            padding: 30px;
-            color: #888;
-            font-size: 0.9em;
+            padding: 40px;
+            color: #777;
+            background: #eef1f4;
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 2rem; }
+            .player-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>🏆 فانتازي القرية 🏆</h1>
-    <p>بإشراف منصة BR سريع</p>
+    <h1>Al-Wali Fantasy</h1>
+    <p>Powered by BR SAREE3 Platform</p>
 </header>
 
 <div class="container">
-    <h2>📊 قائمة اللاعبين والأسعار (الموسم الأول)</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>اللاعب</th>
-                <th>المركز</th>
-                <th>السعر (مليون)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td>محمد العاقب</td><td class="pos-fw">مهاجم</td><td><span class="price-tag">10.0</span></td></tr>
-            <tr><td>كمال احمد مهدي</td><td class="pos-fw">مهاجم</td><td><span class="price-tag">8.5</span></td></tr>
-            <tr><td>محمد عبد الجليل</td><td class="pos-mf">وسط</td><td><span class="price-tag">7.0</span></td></tr>
-            <tr><td>عبد الله السنجك</td><td class="pos-mf">وسط</td><td><span class="price-tag">7.0</span></td></tr>
-            <tr><td>احمد خوجلي</td><td class="pos-mf">وسط</td><td><span class="price-tag">6.5</span></td></tr>
-            <tr><td>محمد الهادي</td><td class="pos-mf">وسط</td><td><span class="price-tag">6.0</span></td></tr>
-            <tr><td>احمد الفكي</td><td class="pos-mf">وسط</td><td><span class="price-tag">6.0</span></td></tr>
-            <tr><td>محمد الهادي</td><td class="pos-df">مدافع</td><td><span class="price-tag">4.8</span></td></tr>
-            <tr><td>معتز قرشي</td><td class="pos-df">مدافع</td><td><span class="price-tag">4.6</span></td></tr>
-            <tr><td>بشير حيدر</td><td class="pos-df">مدافع</td><td><span class="price-tag">4.5</span></td></tr>
-            <tr><td>مجتبي الصديق</td><td class="pos-df">مدافع</td><td><span class="price-tag">4.3</span></td></tr>
-        </tbody>
-    </table>
+
+    <div class="position-section">
+        <div class="section-title">STRIKERS (FW)</div>
+        <div class="player-grid">
+            <div class="player-card">
+                <span class="pos-badge bg-fw">Forward</span>
+                <span class="player-name">Mohamed Al-Aqib</span>
+                <span class="price-tag">£10.0M</span>
+            </div>
+            <div class="player-card">
+                <span class="pos-badge bg-fw">Forward</span>
+                <span class="player-name">Kamal Ahmed Mahdi</span>
+                <span class="price-tag">£8.5M</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="position-section">
+        <div class="section-title">MIDFIELDERS (MF)</div>
+        <div class="player-grid">
+            <div class="player-card">
+                <span class="pos-badge bg-mf">Midfield</span>
+                <span class="player-name">Mohamed Abdeljalil</span>
+                <span class="price-tag">£7.0M</span>
+            </div>
+            <div class="player-card">
+                <span class="pos-badge bg-mf">Midfield</span>
+                <span class="player-name">Abdullah Al-Sanjak</span>
+                <span class="price-tag">£7.0M</span>
+            </div>
+            <div class="player-card">
+                <span class="pos-badge bg-mf">Midfield</span>
+                <span class="player-name">Ahmed Khojali</span>
+                <span class="price-tag">£6.5M</span>
+            </div>
+            <div class="player-card">
+                <span class="pos-badge bg-mf">Midfield</span>
+                <span class="player-name">Mohamed Al-Hadi (MF)</span>
+                <span class="price-tag">£6.0M</span>
+            </div>
+            <div class="player-card">
+                <span class="pos-badge bg-mf">Midfield</span>
+                <span class="player-name">Ahmed Al-Faki</span>
+                <span class="price-tag">£6.0M</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="position-section">
+        <div class="section-title">DEFENDERS (DF)</div>
+        <div class="player-grid">
+            <div class="player-card">
+                <span class="pos-badge bg-df">Defense</span>
+                <span class="player-name">Mohamed Al-Hadi (DF)</span>
+                <span class="price-tag">£4.8M</span>
+            </div>
+            <div class="player-card">
+                <span class="pos-badge bg-df">Defense</span>
+                <span class="player-name">Motaz Qurashi</span>
+                <span class="price-tag">£4.6M</span>
+            </div>
+            <div class="player-card">
+                <span class="pos-badge bg-df">Defense</span>
+                <span class="player-name">Bashir Haidar</span>
+                <span class="price-tag">£4.5M</span>
+            </div>
+            <div class="player-card">
+                <span class="pos-badge bg-df">Defense</span>
+                <span class="player-name">Mujtaba Al-Siddiq</span>
+                <span class="price-tag">£4.3M</span>
+            </div>
+        </div>
+    </div>
+
 </div>
 
-<div class="container cta-section">
-    <h2>🚀 كن أنت المدير الفني!</h2>
-    <p>اختر فريقك الآن بميزانية 100 مليون وتنافس مع شباب القرية</p>
-    <a href="#" class="btn">سجل تشكيلتك الآن</a>
-</div>
+<a href="https://wa.me/YOUR_PHONE_NUMBER" class="fab">SUBMIT TEAM</a>
 
 <footer>
-    <p>تم التصميم بواسطة <strong>BR سريع</strong> &copy; 2026</p>
+    <p>&copy; 2026 BR SAREE3 | Al-Wali Village Sports</p>
 </footer>
 
 </body>
